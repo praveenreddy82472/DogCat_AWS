@@ -86,16 +86,7 @@ jobs:
 
       - name: Login to Amazon ECR
         id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v2
-        with:
-          registry-type: 'private'
-          mask-password: true
-          skip-logout: false
-        env:
-          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-        run: |
-          echo "${{ secrets.AWS_SECRET_ACCESS_KEY }}" | docker login --username AWS --password-stdin ${{ secrets.AWS_ECR_LOGIN_URI }}
+        uses : aws-actions/amazon-ecr-login@v2
       
       - name: Pull latest images
         run: |
